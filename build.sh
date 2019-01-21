@@ -16,22 +16,15 @@ service iptables stop;
 chkconfig iptables off;
 rm -rf /etc/rc.d/init.d/iptables
 
-wget http://ftp.ruby-lang.org/pub/ruby/2.1/ruby-2.1.1.tar.gz
-tar xvzf ruby-2.1.1.tar.gz
-cd ruby-2.1.1
-./configure --prefix=/usr
-make
-make install
-cd /; rm -rf ruby-2.1.1*
-
-gem update --system
-gem install nokogiri
-gem install jekyll bundler
 
 curl --silent --location https://rpm.nodesource.com/setup_6.x | bash -
 yum -y install nodejs
-npm install gulp-cli -g
-npm install karma-cli -g
+npm config set ca ""
+npm install npm -g
+npm config delete ca
+
+npm install -g bower
+npm install -g grunt-cli
 
 yum -y install perl-CPAN
 curl -L http://cpanmin.us | perl - App::cpanminus
